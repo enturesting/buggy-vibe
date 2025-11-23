@@ -18,6 +18,12 @@ function Navbar() {
           <li>
             <Link to="/contact" className="navbar-link">Contact</Link>
           </li>
+          <li>
+            <Link to="/login" className="navbar-link">Login</Link>
+          </li>
+          <li>
+            <Link to="/users" className="navbar-link">Users</Link>
+          </li>
           {/* BUG: Broken link to non-existent page */}
           <li>
             <Link to="/about-us" className="navbar-link">About</Link>

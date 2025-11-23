@@ -4,6 +4,8 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Products from './pages/Products';
 import Contact from './pages/Contact';
+import Login from './pages/Login';
+import UserSearch from './pages/UserSearch';
 import NotFound from './pages/NotFound';
 import './App.css';
 
@@ -17,6 +19,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/products" element={<Products />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/users" element={<UserSearch />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>

@@ -18,6 +18,7 @@ BuggyVibe is a testing playground for AI-powered QA systems. The application con
 - **Home Page**: Welcome section with hero banner and feature highlights
 - **Products Page**: Product catalog fetched from mock database
 - **Contact Page**: Contact form with submission handling
+- **Login Page**: User authentication form (vulnerable to SQL injection)
 - **Responsive Design**: Mobile-friendly layouts
 
 ## 🐞 Intentional Bugs (For QA Testing)
@@ -40,6 +41,12 @@ This application contains the following intentional bugs:
 
 5. **Console Error**:
    - Home page logs tracking error to console
+
+6. **Security Vulnerabilities** (when using vulnerable server):
+   - **SQL Injection**: User search and login endpoints vulnerable to SQL injection
+   - **Data Exposure**: Cleartext passwords stored in pw_db.json
+   - **Debug Endpoint**: Exposed database schema at /api/debug/schema
+   - **No Input Validation**: User ID endpoint accepts any input
 
 ## 🚀 Getting Started
 
@@ -71,10 +78,18 @@ npm run dev
 ```
 The app will be available at: `http://localhost:5173`
 
-#### Terminal 2 - Backend (json-server)
+#### Terminal 2 - Backend (Choose one)
+
+**Option A: Regular json-server** (basic functionality)
 ```bash
 npm run server
 ```
+
+**Option B: Vulnerable server** (includes SQL injection vulnerabilities)
+```bash
+npm run server:vulnerable
+```
+
 The API will be available at: `http://localhost:3001`
 
 **Important**: Both servers must be running simultaneously for the application to work properly.
@@ -125,6 +140,31 @@ buggy-vibe/
 2. Navigate to Home page
 3. Expected: Red error message about tracking failure
 
+### Test Case 7: SQL Injection - User Search (requires vulnerable server)
+1. Start the vulnerable server (`npm run server:vulnerable`)
+2. Make a GET request to: `http://localhost:3001/api/users/search?username=' OR '1'='1' --`
+3. Expected: Returns all users from the database instead of no results
+
+### Test Case 8: SQL Injection - Login Bypass (requires vulnerable server)
+1. Start the vulnerable server
+2. Make a POST request to `http://localhost:3001/api/login` with:
+   ```json
+   {
+     "username": "admin' OR '1'='1' --",
+     "password": "anything"
+   }
+   ```
+3. Expected: Successfully logs in as admin user without correct password
+
+### Test Case 9: Data Exposure - Debug Endpoint
+1. Start the vulnerable server
+2. Navigate to: `http://localhost:3001/api/debug/schema`
+3. Expected: Exposes entire database schema information
+
+### Test Case 10: Cleartext Password Storage
+1. View the `pw_db.json` file
+2. Expected: All passwords are stored in cleartext (not hashed)
+
 ## 📦 Available Scripts
 
 - `npm run dev` - Start development server
@@ -132,6 +172,7 @@ buggy-vibe/
 - `npm run preview` - Preview production build
 - `npm run lint` - Run ESLint
 - `npm run server` - Start json-server mock backend
+- `npm run server:vulnerable` - Start vulnerable server with SQL injection endpoints
 
 ## 🎨 Styling Approach
 
@@ -141,10 +182,17 @@ The application uses vanilla CSS with a modular approach:
 - Responsive design patterns
 - Modern flexbox/grid layouts
 
-## 📝 API Endpoints (json-server)
+## 📝 API Endpoints
 
+### Standard Endpoints (json-server)
 - `GET /products` - Fetch all products
 - `POST /contacts` - Submit contact form
+
+### Vulnerable Endpoints (vulnerable server only)
+- `GET /api/users/search?username=xxx` - SQL injection vulnerable user search
+- `POST /api/login` - SQL injection vulnerable login endpoint
+- `GET /api/users/:id` - User endpoint with no input validation
+- `GET /api/debug/schema` - Exposed debug endpoint showing database schema
 
 ## 🤝 Contributing
 

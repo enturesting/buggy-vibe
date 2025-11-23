@@ -13,10 +13,10 @@ function Home() {
       <div className="hero-section">
         <h1>Welcome to BuggyVibe</h1>
         <p className="hero-subtitle">Your testing playground for AI QA systems</p>
-        {/* BUG: Broken image source */}
+        {/* Updated with AI Injectors team logo */}
         <img 
-          src="/images/hero-banner-missing.jpg" 
-          alt="Welcome banner featuring our products"
+          src="/images/Screenshot 2025-11-23 at 7.39.24 AM.png" 
+          alt="AI Injectors - AI Hackathon Team"
           className="hero-image"
         />
         <div className="hero-cta">

@@ -24,14 +24,16 @@
 }
 
 .hero-image {
-  max-width: 600px;
+  max-width: 400px;
   width: 100%;
-  height: 300px;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
   border-radius: 8px;
   margin: 2rem auto;
   display: block;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .hero-cta {
