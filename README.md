@@ -53,46 +53,78 @@ This application contains the following intentional bugs:
 ### Prerequisites
 
 - Node.js (v18 or higher)
-- npm or yarn
+- npm
 
-### Installation
+### Quick Setup (Copy & Paste)
 
-1. Clone the repository:
 ```bash
-git clone <repository-url>
+# === STEP 1: Clone and Navigate ===
+git clone https://github.com/enturesting/buggy-vibe.git
 cd buggy-vibe
-```
 
-2. Install dependencies:
-```bash
+# === STEP 2: Install Dependencies ===
 npm install
+
+# === STEP 3: Start Backend (New Terminal) ===
+# For SQL injection testing (RECOMMENDED):
+npm run server:vulnerable
+
+# Or for basic functionality only:
+# npm run server
+
+# === STEP 4: Start Frontend (Another New Terminal) ===
+npm run dev
+
+# === DONE! ===
+# Frontend: http://localhost:5173
+# Backend:  http://localhost:3001
 ```
 
-### Running the Application
+### Test Credentials
 
-You need to run both the frontend and the mock backend server:
+```
+Normal Login:
+- Username: admin / Password: admin123
+- Username: john_doe / Password: password123
 
-#### Terminal 1 - Frontend (React App)
+SQL Injection (Login Page):
+- Username: admin' OR '1'='1' --
+- Password: anything
+
+SQL Injection (User Search):
+- Search: ' OR '1'='1' --
+- Search: ' UNION SELECT * FROM users --
+```
+
+### Running the Application (Detailed)
+
+You need **TWO terminal windows** running simultaneously:
+
+**Terminal 1 - Backend Server**
 ```bash
+# Navigate to project
+cd buggy-vibe
+
+# Choose ONE of these:
+npm run server:vulnerable  # Recommended - includes SQL injection endpoints
+# OR
+npm run server            # Basic server without vulnerabilities
+```
+
+**Terminal 2 - Frontend**
+```bash
+# Navigate to project
+cd buggy-vibe
+
+# Start React app
 npm run dev
 ```
-The app will be available at: `http://localhost:5173`
 
-#### Terminal 2 - Backend (Choose one)
+**Access Points:**
+- Frontend: `http://localhost:5173`
+- Backend API: `http://localhost:3001`
 
-**Option A: Regular json-server** (basic functionality)
-```bash
-npm run server
-```
-
-**Option B: Vulnerable server** (includes SQL injection vulnerabilities)
-```bash
-npm run server:vulnerable
-```
-
-The API will be available at: `http://localhost:3001`
-
-**Important**: Both servers must be running simultaneously for the application to work properly.
+**Important**: Both servers must be running at the same time!
 
 ## 📁 Project Structure
 
