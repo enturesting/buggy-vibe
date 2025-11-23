@@ -1,0 +1,41 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Wireless Mouse",
+      "description": "Ergonomic wireless mouse with 3 DPI settings",
+      "price": 29.99,
+      "image": "https://example.com/mouse.jpg"
+    },
+    {
+      "id": "2",
+      "name": "Mechanical Keyboard",
+      "description": "RGB backlit mechanical keyboard with blue switches",
+      "price": 89.99,
+      "image": "https://example.com/keyboard.jpg"
+    },
+    {
+      "id": "3",
+      "name": "USB-C Hub",
+      "description": "7-in-1 USB-C hub with HDMI, USB 3.0, and SD card reader",
+      "price": 45.99,
+      "image": "https://example.com/hub.jpg"
+    },
+    {
+      "id": "4",
+      "name": "Laptop Stand",
+      "description": "Adjustable aluminum laptop stand for better ergonomics",
+      "price": 39.99,
+      "image": "https://example.com/stand.jpg"
+    }
+  ],
+  "contacts": [
+    {
+      "id": "5f01",
+      "name": "",
+      "email": "",
+      "message": "",
+      "timestamp": "2025-11-23T05:36:13.898Z"
+    }
+  ]
+}
