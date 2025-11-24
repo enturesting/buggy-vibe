@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "server": "json-server --watch db.json --port 3001",
-    "server:vulnerable": "node vulnerable-server.js"
+    "server:vulnerable": "node server-vulnerable.cjs"
   },
   "dependencies": {
     "cors": "^2.8.5",
